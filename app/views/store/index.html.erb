@@ -1,0 +1,30 @@
+<% if notice %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Menu</h1>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <% @products.each do |product| %>
+          <% product.prices.each_key do |keys| %>
+            <th><%= keys %></th>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+      <tbody>
+        <tr>
+          <% @products.each do |product| %>
+          <td><%= product.title %></td>
+            <% product.prices.each_value do |values| %>
+              <td><%= values %></td>
+            <% end %>
+          <% end %>
+      </tbody>
+  </table>
+</div>
+

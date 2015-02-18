@@ -1,0 +1,38 @@
+<div id="profile">
+  <h1>Logged-in as <%= current_user.email %></h1>
+
+  <% if current_user.profile.nil? %>
+  <h2>Please verify your identity</h2>>
+  <% else %>
+  <div class="col-sm-2">Verified: </div>
+  <div class="col-sm-10">
+    <%= current_user.profile.verified %><br />
+  </div>
+  <div class="col-sm-2">Name: </div>
+  <div class="col-sm-10"><%= current_user.profile.firstname %> <%= current_user.profile.lastname %><br /></div>
+  <div class="col-sm-2">Prescription ID: </div>
+  <% if current_user.profile.prescription_card.present?%>
+    <div class="profile-img">
+      <%= image_tag current_user.profile.prescription_card.url(:normal) %><br />
+    </div>
+  <% else %>
+    None. Please update your profile<br/>
+  <% end %><br />
+  <div class="col-sm-2">Valid ID Card: </div>
+  <% if current_user.profile.idcard.present? %>
+    <div class="profile-img">
+       <%= image_tag current_user.profile.idcard.url(:normal), class:"image-responsive" %>
+    </div>
+    <% else %>
+      None. Please update your profile<br/>
+    <% end %>
+  <% end %>
+
+  <div class="col-sm-offset-1">
+    <% if current_user.profile.nil? %>
+      <%= link_to 'Create Profile', new_user_profile_path(current_user), id: "new_profile", class: "btn btn-default pull", remote: true %>	
+    <% else %>
+      <%= link_to 'Edit Profile', edit_user_profile_path(current_user), class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>

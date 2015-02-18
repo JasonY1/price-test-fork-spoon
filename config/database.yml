@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: dabcab_development
+  pool: 5
+  username: dabcab
+  password: somepassword
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: dabcab_test
+  pool: 5
+  username: dabcab
+  password: somepassword
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: dabcab_test
+  pool: 5
+  username: dabcab
+  password: somepassword
